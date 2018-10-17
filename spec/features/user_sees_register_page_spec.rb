@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe 'user sees login page' do
+describe 'user sees new registration page' do
   it 'can register as a new user' do
 
-    visit '/'
+    visit new_user_path
 
     fill_in "user[name]", with: "bdiveley"
     fill_in "user[email]", with: "bailey@bailey.com"
@@ -17,7 +17,7 @@ describe 'user sees login page' do
   end
   it 'cannot register as a new user if all info isnt completed' do
 
-    visit '/'
+    visit new_user_path
 
     fill_in "user[name]", with: "bdiveley"
     fill_in "user[password]", with: "password"
@@ -27,7 +27,7 @@ describe 'user sees login page' do
   it 'cannot register as a new user if email already exists' do
     user = User.create(name: "bailey", email: "bailey@gmail.com", password: "password")
 
-    visit '/'
+    visit new_user_path
 
     fill_in "user[name]", with: "bdiveley"
     fill_in "user[email]", with: "bailey@gmail.com"
